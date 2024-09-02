@@ -54,8 +54,5 @@ def main():
     print("MA Period      |", period)
     print("Buy/Sell Bound |", bound)
 
-
-
-
 if __name__ == '__main__':
     main()

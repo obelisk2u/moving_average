@@ -4,23 +4,30 @@ import matplotlib.pyplot as plt
 import pandas as pd 
 
 
-def read_csv(filename):
-    df = pd.read_csv(filename)
-    df['Date'] = pd.to_datetime(df['Date'])
-    df = df.sort_values(by = 'Date')
+
+def analyze_data(df, period):
+    #find avg of daily high/low
+    df['hc_avg']=(df['Open']+df['Close'])/2
+
+    #take moving average 
+    df['MA']=df.rolling(window=period, min_periods=0)['hc_avg'].mean()
+
+    #take slope of moving average
+    df["Slope"]= df['MA'].diff()
+
     return df
 
-def moving_avg(df, dt):
-    df['MA']=df.rolling(window=dt, min_periods=0)['Open'].mean()
-    print(df.iloc[0:100,7])
-    return df
+def plot(df, xin, yin):
+    df.plot(x=xin, y=yin)
+    plt.show
 
 
 def main():
-    df=read_csv("TSLA.csv")
-    df=moving_avg(df, 100)
-    df.plot(x = 'Date', y = 'MA')
-
+    df = pd.read_csv('TSLA.csv')
+    df['Date'] = pd.to_datetime(df['Date'])
+    df = df.sort_values(by = 'Date')
+    df = analyze_data(df, 75)
+    plot(df,'Date', 'Slope')
     plt.show()
 
 

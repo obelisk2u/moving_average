@@ -8,11 +8,6 @@ Welcome to the **Trading Algorithms** repository! This project contains a collec
 - [Algorithms](#algorithms)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Backtesting](#backtesting)
-- [Live Trading](#live-trading)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 

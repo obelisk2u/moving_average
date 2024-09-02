@@ -34,15 +34,9 @@ def buy_sell(df, bound):
     return profit
 
 def main():
-    filename = input("CSV file name (hit Return for demonstration): ")
-    if(filename==""):
-        filename="TSLA.csv"
-        period=75
-        bound=0
-    else:
-        period = input("Moving average period: ")
-        bound = input("Buy sell bound: ")
-    
+    filename = "TSLA.csv"
+    period = 75
+    bound = 0
     df = pd.read_csv(filename)
     df['Date'] = pd.to_datetime(df['Date'])
     df = df.sort_values(by = 'Date')
@@ -50,7 +44,7 @@ def main():
     profit=buy_sell(df, bound)
 
     print("Summary of MA Acceleration Method for: ", filename)
-    print("Profit         |", profit)
+    print("Profit         |", round(profit,1))
     print("MA Period      |", period)
     print("Buy/Sell Bound |", bound)
 

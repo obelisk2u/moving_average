@@ -22,25 +22,38 @@ def analyze_data(df, period):
 
     return df
 
-def buy_sell(df):
+def buy_sell(df, bound):
     cash_pos=0
     profit=0
     for i in range(0,len(df)):
-        if(df['Accel'][i]>0):
+        if(df['Accel'][i]>bound):
             cash_pos = cash_pos + df["oc_avg"][i]
         else:
             profit+=cash_pos
             cash_pos=0
-    print(profit)
+    return profit
 
 def main():
-    df = pd.read_csv('TSLA.csv')
+    filename = input("CSV file name (hit Return for demonstration): ")
+    if(filename==""):
+        filename="TSLA.csv"
+        period=75
+        bound=0
+    else:
+        period = input("Moving average period: ")
+        bound = input("Buy sell bound: ")
+    
+    df = pd.read_csv(filename)
     df['Date'] = pd.to_datetime(df['Date'])
     df = df.sort_values(by = 'Date')
-    df = analyze_data(df, 75)
-    buy_sell(df)
-    #plot(df,'Date', 'Accel')
-    #plt.show()
+    df = analyze_data(df, period)
+    profit=buy_sell(df, bound)
+
+    print("Summary of MA Acceleration Method for: ", filename)
+    print("Profit         |", profit)
+    print("MA Period      |", period)
+    print("Buy/Sell Bound |", bound)
+
 
 
 

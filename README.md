@@ -6,24 +6,16 @@ Welcome to the **Trading Algorithms** repository! This project contains a collec
 
 - [Introduction](#introduction)
 - [Algorithms](#algorithms)
-- [Installation](#installation)
-- [Usage](#usage)
+- [Installation](#installation-steps)
 
 ## Introduction
 
 This repository provides a framework for developing and testing trading algorithms. Whether you're a beginner in quantitative finance or an experienced algorithmic trader, this repository will help you create and refine trading strategies that can be used in both historical simulations and real-world trading.
 
 ## Algorithms
-
-### Included Strategies
 - **Momentum Trading**: Buys assets that have shown an upward price trend and sells those on a downward trend.
 
-### Prerequisites
-
-- Python 3.8+
-- pip (Python package installer)
-
-### Installation Steps
+## Installation Steps
 
 1. Clone the repository:
     ```bash
